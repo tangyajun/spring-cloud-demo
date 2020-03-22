@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.tangyajun</groupId>
+	<artifactId>spring-cloud-demo</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>spring-cloud-demo</name>
+	<description>Demo project for Spring Boot</description>
+	<packaging>pom</packaging>
+
+	<properties>
+		<start-class></start-class>
+		<java.version>1.8</java.version>
+		<spring-cloud.version>Finchley.RELEASE</spring-cloud.version>
+		<spring-cloud-eureka-server.version>2.0.3.RELEASE</spring-cloud-eureka-server.version>
+		<spring-cloud-eureka-client.version>2.0.3.RELEASE</spring-cloud-eureka-client.version>
+		<!--<spring-cloud.version>Greenwich.SR1</spring-cloud.version>-->
+		<spring-cloud-eureka-server.version>1.4.6.RELEASE</spring-cloud-eureka-server.version>
+		<spring-cloud-eureka.version>1.4.6.RELEASE</spring-cloud-eureka.version>
+		<spring-cloud-starter.version>1.4.6.RELEASE</spring-cloud-starter.version>
+	</properties>
+
+	<modules>
+		<module>spring-cloud-registry</module>
+		<module>spring-cloud-server</module>
+		<module>spring-cloud-consumer</module>
+		<module>hystrix-dashboard</module>
+		<module>turbine</module>
+		<module>api-gateway</module>
+		<module>spring-cloud-parent</module>
+		<module>spring-cloud-service-provide</module>
+		<module>spring-cloud-gateway</module>
+		<module>eureka-server</module>
+	</modules>
+
+
+</project>

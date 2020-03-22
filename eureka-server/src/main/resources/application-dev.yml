@@ -1,0 +1,21 @@
+server:
+  port: 8762
+
+eureka:
+  instance:
+    hostname: localhost
+    # 指定Eureka Client 间隔多久需要想Eureka-Server发送心跳来告知Eureka-Server该实例还存活 默认90
+    lease-expiration-duration-in-seconds: 30
+    prefer-ip-address: true
+  client:
+    # 是否应该将实例注册到Eureka-Server 默认为true
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  server:
+    wait-time-in-ms-when-sync-empty: 0
+    enable-self-preservation: false
+spring:
+  application:
+    name: eureka-server

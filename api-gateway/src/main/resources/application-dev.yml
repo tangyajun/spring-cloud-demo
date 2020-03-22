@@ -1,0 +1,43 @@
+server:
+  port: 5555
+spring:
+  application:
+    name: api-gateway
+zuul:
+  routes:
+    api-a:
+      path: /api-a/**
+      serviceId: hello-service
+    api-b:
+      path: /api-b/**
+      serviceId: hello-consumer
+eureka:
+  instance:
+    #ip-address: 192.168.98.22
+    #prefer-ip-address: true
+    hostname: localhost
+  client:
+    serviceUrl:
+      #defaultZone: http://192.168.98.22:8761/eureka/,http://192.168.98.23:8761/eureka/
+      defaultZone: http://localhost:8761/eureka/
+
+ribbon:
+  eureka:
+    enabled: true
+  ReadTimeout: 30000
+  ConnectTimeout: 30000
+  MaxAutoRetries: 0
+  OkToRetryOnAllOperations: false
+
+hystrix:
+  threadpoool:
+    default:
+      coreSize: 1000 #并发执行最大线程数，默认为10
+      maxQueueSize: 1000 # blockingQueue 的最大队列数
+      queueSizeRejectionThreshold: 500 #即使maxQueueSize没有达到，达到queueSizeRejectionThreshold该值后，请求也会被拒绝
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 120001

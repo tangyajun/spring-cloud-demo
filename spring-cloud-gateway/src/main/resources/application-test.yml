@@ -1,0 +1,81 @@
+server:
+  port: 8088
+
+spring:
+  application:
+    name: spring-cloud-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+#        - id: api-a
+#          uri: http://hello-service/
+#          predicates:
+#            - Path=/api-a/**
+        #        filters:
+        #         name: Hystrix # Hystrix Filter的名称
+        #           # Hystrix配置参数
+        #            args:
+        #              # HystrixCommand的名字
+        #              name: fallbackcmd
+        #              fallbackUri: forward:/fallback # fallback对应的uri
+        - id: spring-cloud-consumer
+          uri: lb://hello-consumer
+          predicates:
+            - Path=/test/**
+          filters:
+            - name: Hystrix
+              args:
+                name: fallbackcmd
+                fallbackUri: forward:/fallback # fallback对应的uri
+            - name: Retry
+              args:
+                retries: 3 #重试次数
+                series:
+                  - SERVER_ERROR #状态码，符合这个状态码才会进入重试逻辑， Series 有五个状态码，SERVER_ERROR的值是5，也就是5XX(5开头的状态码)
+                statuses:
+                  - OK
+                methods:  #指定需要进行重试逻辑的方法
+                  - GET
+                  - POST
+                  - PUT
+                  - DELETE
+                exceptions: #指定哪些异常需要进行重试逻辑
+                  - java.io.IOException #默认是IOException
+                  - java.util.concurrent.TimeoutException
+        #        filters:
+        #           name: Hystrix
+        #            args:
+        #              name: fallbackcmd2
+        #              fallbackUri: forward:/fallback
+#        - id: api-c
+#          uri: http://cloud-service-provide/
+#          predicates:
+#            - Path=/api-a/**
+        - id: jd_route
+          uri: http://jd.com/
+          predicates:
+            - Path=/jd
+
+eureka:
+  instance:
+    #ip-address: 192.168.98.22
+    prefer-ip-address: true
+    #hostname: localhost
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+    #defaultZone: http://192.168.98.22:8761/eureka/,http://192.168.98.23:8761/eureka/
+            #defaultZone: http://localhost:8761/eureka/
+
+
+logging:
+  level:
+    org.springframework.cloud.gateway: debug
+    org.springframework.http.server.reactive: DEBUG
+    org.springframework.web.reactvie: DEBUG
+    reactor.ipc.netty: DEBUG
