@@ -1,0 +1,47 @@
+spring:
+  application:
+    name: hello-consumer
+  #profiles: 192.168.98.23
+
+
+server:
+  port: 8008
+  servlet:
+    context-path: /consumer
+
+eureka:
+  instance:
+    hostname: localhost
+    #ip-address: 192.168.98.22
+    prefer-ip-address: true
+    lease-expiration-duration-in-seconds: 10
+  client:
+    serviceUrl:
+      #defaultZone: http://192.168.98.22:8761/eureka/,http://192.168.98.23:8761/eureka/
+      defaultZone: http://10.136.220.90:8761/eureka/,http://10.136.220.90:8762/eureka/
+      #defaultZone: http://localhost:8761/eureka/
+
+# 开启hystrix 熔断机制
+feign:
+  hystrix:
+    enabled: true
+  client:
+    config:
+      default:
+        connectTimeout: 2000
+        readTimeout: 2000
+
+ribbon:
+  eureka:
+    enabled: true
+  ConnectTimeout: 20000
+  ReadTimeout: 20000
+  # 是否开启重试机制
+  OkToRetryOnAllOperations: true
+  # 重试的时候实例切换次数
+  MaxAutoRetriesNextServer: 3
+  # 每个实例重试次数
+  MaxAutoRetries: 2
+
+hystrix:
+  threadpool:

@@ -1,9 +1,12 @@
 package com.tangyajun.springcloud.consumer.web.controller;
 
+
+
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.tangyajun.springcloud.consumer.web.service.remote.HelloService;
 import com.tangyajun.springcloud.consumer.web.service.remote.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,7 +18,7 @@ import org.springframework.web.client.RestTemplate;
  * @create 2019-04-29-11:08
  **/
 @RestController
-@RequestMapping(value = "/consumer")
+@RequestMapping(value = "")
 public class ConsumerController {
 	@Autowired
 	RestTemplate restTemplate;
@@ -24,8 +27,8 @@ public class ConsumerController {
 	@Autowired
 	UserService userService;
 
-	//@HystrixCommand(fallbackMethod = "test")
-	@RequestMapping(value = "/hello",method = RequestMethod.GET)
+	@HystrixCommand(fallbackMethod = "test")
+	@GetMapping(value = "/hello")
 	public String hello() {
 		/*String body="";
 		try {
@@ -37,12 +40,17 @@ public class ConsumerController {
 		}
 		return body;*/
 		//return helloService.helloService();
-		//return userService.sayHello("test");
-		return "hi,aaron";
+		return userService.sayHello("test");
+
+		//return JSON.toJSONString(Response.success(0,"success","hi,aaron"));
+		//return "hi , aaron ";
 	}
 
+
 	public String test() {
+
 		return "访问的用户过多请稍后再试";
+//		return "访问的用户过多请稍后再试";
 	}
 
 

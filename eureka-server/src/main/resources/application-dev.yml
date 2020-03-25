@@ -4,8 +4,8 @@ server:
 eureka:
   instance:
     hostname: localhost
-    # 指定Eureka Client 间隔多久需要想Eureka-Server发送心跳来告知Eureka-Server该实例还存活 默认90
-    lease-expiration-duration-in-seconds: 30
+    # 指定Eureka Client 间隔多久需要向Eureka-Server发送心跳来告知Eureka-Server该实例还存活 默认90
+    lease-expiration-duration-in-seconds: 10
     prefer-ip-address: true
   client:
     # 是否应该将实例注册到Eureka-Server 默认为true

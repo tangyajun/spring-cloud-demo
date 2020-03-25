@@ -3,6 +3,9 @@ package com.example.gateway;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/**
+ * @author tangyajun
+ */
 @SpringBootApplication
 public class SpringCloudGatewayApplication {
 

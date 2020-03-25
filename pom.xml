@@ -32,6 +32,7 @@
 		<module>spring-cloud-service-provide</module>
 		<module>spring-cloud-gateway</module>
 		<module>eureka-server</module>
+		<module>demo-common</module>
 	</modules>
 
 

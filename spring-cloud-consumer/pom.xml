@@ -61,6 +61,11 @@
             <artifactId>spring-cloud-starter-netflix-hystrix-dashboard</artifactId>
             <version>${spring-cloud-starter-netflix-hystrix-dashboard.version}</version>
         </dependency>
+		<dependency>
+			<groupId>com.example</groupId>
+			<artifactId>demo-common</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 		<!-- spring-cloud 链路跟踪 -->
 		<!--<dependency>
             <groupId>org.springframework.cloud</groupId>
