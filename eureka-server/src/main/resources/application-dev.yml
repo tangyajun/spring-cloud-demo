@@ -12,10 +12,12 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://localhost:8762/eureka/
   server:
     wait-time-in-ms-when-sync-empty: 0
     enable-self-preservation: false
+    # 指定EvictionTask定时任务的调度频率，用于剔除过期的实例
+    #eviction-interval-timer-in-ms: 30
 spring:
   application:
     name: eureka-server

@@ -33,6 +33,8 @@
 		<module>spring-cloud-gateway</module>
 		<module>eureka-server</module>
 		<module>demo-common</module>
+		<module>spring-cloud-zuul</module>
+		<module>ribbon-service-provider</module>
 	</modules>
 
 

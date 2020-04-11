@@ -13,6 +13,12 @@ public class JwtUtil {
 		HashMap<String,Object> map=new HashMap<>();
 		map.put("id",new Random().nextInt());
 		map.put("user",user);
-		return "";
+		//String token=JwtUtil.generateToken(map);
+		//return token;
+		return null;
+	}
+
+	public static void main(String[] args) {
+		System.out.println(generateToken("aarontang"));
 	}
 }

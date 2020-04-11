@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: ribbon-service-provider
+
+server:
+  port: 7001
+
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://localhost:8762/eureka
