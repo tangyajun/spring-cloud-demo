@@ -2,6 +2,7 @@ package com.tangyajun.springcloud.consumer.web.controller;
 
 
 
+import com.example.democommon.exception.BusinessException;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.tangyajun.springcloud.consumer.web.service.remote.HelloService;
 import com.tangyajun.springcloud.consumer.web.service.remote.UserService;
@@ -47,8 +48,14 @@ public class ConsumerController {
 	}
 
 
-	public String test() {
-
+	public String test(Throwable throwable) {
+		if (throwable != null) {
+			if (throwable instanceof BusinessException) {
+				throw (BusinessException) throwable;
+			}else {
+				throw new BusinessException(throwable,"11111");
+			}
+		}
 		return "访问的用户过多请稍后再试";
 //		return "访问的用户过多请稍后再试";
 	}

@@ -45,6 +45,13 @@ public class GlobalExceptionHandler {
 	        LOGGER.info("===程序异常==",e);
         }
         LOGGER.error("程序异常",e);
-        return new Response(-1,e.getMessage(),null);
+        return new Response(-1,e);
     }
+
+    public Response handleBusinessException(BusinessException e) {
+		if (LOGGER.isInfoEnabled()) {
+			LOGGER.info("===程序异常==",e);
+		}
+		return new Response(-1,e.getServiceName(),e.getMessage());
+	}
 }
