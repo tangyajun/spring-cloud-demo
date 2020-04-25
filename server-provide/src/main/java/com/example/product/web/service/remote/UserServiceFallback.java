@@ -1,5 +1,9 @@
 package com.example.product.web.service.remote;
 
+
+
+import com.example.democommon.bean.Response;
+
 import org.springframework.stereotype.Component;
 
 /**
@@ -10,7 +14,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class UserServiceFallback implements UserInfoService {
 	@Override
-	public String getUserInfo(String username) {
-		return "hello "+username+",cloud-service-provide is unavalable,this is fallback method";
+	public Response getUserInfo(String username) {
+		return Response.fail(-1,"hello "+username+",cloud-service-provide is unavalable,this is fallback method");
 	}
 }

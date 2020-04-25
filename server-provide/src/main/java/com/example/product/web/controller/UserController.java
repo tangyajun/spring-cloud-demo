@@ -1,5 +1,6 @@
 package com.example.product.web.controller;
 
+import com.example.democommon.bean.Response;
 import com.example.product.web.command.UserInfoCommand;
 import com.example.product.web.service.remote.UserInfoService;
 import org.slf4j.Logger;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.concurrent.atomic.AtomicInteger;
+
 
 /**
  * @author tangyajun
@@ -29,7 +31,7 @@ public class UserController {
 	AtomicInteger count=new AtomicInteger();
 
 	@GetMapping(value = "/hello")
-	public Object hello(@RequestParam String username) {
+	public Response hello(@RequestParam String username) {
 		/*try {
 			Thread.sleep(100000L);
 		} catch (InterruptedException e) {
@@ -41,7 +43,8 @@ public class UserController {
 		System.err.println(count.addAndGet(1));
 		//logger.info("invoke 8082 server port, 8081 server is  available ");
 		//return userInfoCommand.execute();
-		return userInfoService.getUserInfo(username);
+		Response response=userInfoService.getUserInfo(username);
+		return response;
 	}
 
 	@RequestMapping(value = "/timeout")

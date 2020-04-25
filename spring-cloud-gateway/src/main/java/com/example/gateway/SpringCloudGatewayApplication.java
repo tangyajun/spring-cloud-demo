@@ -6,10 +6,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 
 /**
  * @author tangyajun
  */
+@ComponentScan(value = {"com.example"})
 @SpringBootApplication
 public class SpringCloudGatewayApplication {
 
@@ -18,7 +20,7 @@ public class SpringCloudGatewayApplication {
 	}
 
 
-	@Bean
+	/*@Bean
 	public RouteLocator customerRouteLocator (RouteLocatorBuilder builder) {
 		return builder.routes()
 				.route(r->r.path("/test")
@@ -26,5 +28,5 @@ public class SpringCloudGatewayApplication {
 		.uri("http://localhost:8001/customerFilter?name=xujin")
 		.order(0)
 		.id("customer_filter")).build();
-	}
+	}*/
 }
