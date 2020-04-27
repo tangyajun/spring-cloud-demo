@@ -1,8 +1,14 @@
-###  spring-cloud-demo
-这是一个spring-cloud 常用组件使用的示例
-##### 主要包括eureak、ribbon、feign、gateway、zuul等组件的使用
+##  spring-cloud-demo
+### spring-cloud 常用组件使用的示例，包括gateway、eureka、feign、hystrix、ribbon、skywalking、zuul
 
-###### eureka-server和spring-cloud-registry 两个注册中心互相注册
+#### spring-cloud-gateway 网关为微服务的入口
+#### spring-cloud-registry、eureka-server 为注册中心，两个注册中心互相注册为集群
+#### server-provide、spring-cloud-service-provide 为服务提供者
+#### spring-cloud-consumer为服务消费者
 
-###### spring-cloud-gateway 注册到eureka-server 
+#### 示例启动流程
+##### 1. 启动spring-cloud-registry、eureka-server 
+##### 2. 启动spring-cloud-gateway
+##### 3. 启动 server-provide、spring-cloud-service-provide、spring-cloud-consumer
+
 
