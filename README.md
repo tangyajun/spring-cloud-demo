@@ -7,8 +7,8 @@
 #### spring-cloud-consumer为服务消费者
 
 #### 示例启动流程
-##### 1. 启动spring-cloud-registry、eureka-server 
-##### 2. 启动spring-cloud-gateway
-##### 3. 启动 server-provide、spring-cloud-service-provide、spring-cloud-consumer
+##### 1. spring-cloud-registry、eureka-server 
+##### 2. spring-cloud-gateway
+##### 3. server-provide、spring-cloud-service-provide、spring-cloud-consumer
 
 
